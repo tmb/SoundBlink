@@ -1,0 +1,30 @@
+{
+  "name": "lightpulsebose",
+  "version": "1.0.0",
+  "description": "Pulses LEDs on a Particle Photon to the \"beat\" of music played on a Bose SoundTouch",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "form-data": "^2.3.2",
+    "request": "^2.86.0",
+    "ws": "^5.1.1",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theos-space/SoundBlink.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/theos-space/SoundBlink/issues"
+  },
+  "homepage": "https://github.com/theos-space/SoundBlink#readme"
+}

@@ -1,0 +1,7 @@
+var exports = module.exports = {};
+
+exports.auth_code = 'Bearer SPOTIFYAUTHTOKENS'
+exports.photon1 = 'photonid'
+exports.photon2 = 'photonid'
+exports.photon_access_token = 'photontoken'
+exports.speaker_ws = 'ws://'
