@@ -3,9 +3,9 @@ const xml2js = require('xml2js');
 const axios = require('axios');
 const FormData = require('form-data');
 const request = require('request');
-const greetings = require('./config.js');
+const config = require('./config.js');
 
-const socket = new WebSocket(greetings.speaker_ws, 'gabbo');
+const socket = new WebSocket(config.speaker_ws, 'gabbo');
 let currentTrack;
 let timeBetween;
 
@@ -13,8 +13,8 @@ function pulseLight(seconds) {
   // First Photon
   const options = {
     method: 'POST',
-    url: `https://api.particle.io/v1/devices/${greetings.photon1}/led`,
-    qs: { access_token: greetings.photon_access_token },
+    url: `https://api.particle.io/v1/devices/${config.photon1}/led`,
+    qs: { access_token: config.photon_access_token },
     form: { arg: seconds },
   };
   request(options);
@@ -22,8 +22,8 @@ function pulseLight(seconds) {
   // Second Photon
   const options2 = {
     method: 'POST',
-    url: `https://api.particle.io/v1/devices/${greetings.photon2}/led`,
-    qs: { access_token: greetings.photon_access_token },
+    url: `https://api.particle.io/v1/devices/${config.photon2}/led`,
+    qs: { access_token: config.photon_access_token },
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
     form: { arg: seconds },
   };
@@ -38,7 +38,7 @@ function getTempo(trackId) {
   }
   currentTrack = trackId.replace('spotify:track:', '');
   console.log(`Now playing ${currentTrack}`);
-  axios.get(`https://api.spotify.com/v1/audio-features/${trackId.replace('spotify:track:', '')}`, { headers: { Authorization: greetings.auth_code } }).then((response) => {
+  axios.get(`https://api.spotify.com/v1/audio-features/${trackId.replace('spotify:track:', '')}`, { headers: { Authorization: config.auth_code } }).then((response) => {
     console.log(`The tempo of this song is: ${response.data.tempo}`);
     pulseLight(60000 / parseInt(response.data.tempo));
     timeBetween = 60000 / parseInt(response.data.tempo);
